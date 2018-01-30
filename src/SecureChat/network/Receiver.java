@@ -44,6 +44,10 @@ public class Receiver {
         receiveThread.start();
     }
 
+    /*
+    Splits incoming message into nonce and cyphertext
+    gets invalid size (23) nonce if nonce ends with 0, causing error at decryption
+     */
     private void processMessage(String data) {
         data = data.substring(1);
         data = data.substring(0, data.length() - 1);
@@ -51,7 +55,7 @@ public class Receiver {
         String nonce = data.substring(0, dividerIndex);
         String cypherText = data.substring(dividerIndex + 3, data.length());
         String message = cryptoUtil.decrypt(stringToBa(cypherText), stringToBa(nonce));
-        Platform.runLater(() -> messages.add(person + ": " + message));
+        Platform.runLater(() -> messages.add(person + ": " + message));     // runlater method is used to satisfy JavaFX thread
     }
 
     public void setMessageList(ObservableList<String> messages) {

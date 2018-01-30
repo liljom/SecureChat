@@ -37,13 +37,11 @@ public class Sender {
         }
     }
 
-    private String createText(String nonce, String cypherText) {
-        String toSend = null;
-        try {
-            toSend = new String(new byte[128], "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+    /*
+    Creates a String starting with X, concatenates nonce, divider (000), cyphertext and tailing X
+     */
+    private String createText(String nonce, String cypherText) throws UnsupportedEncodingException {
+        String toSend = new String(new byte[128], "ISO-8859-1");
         toSend += "X";
         toSend += nonce;
         toSend += "000";
