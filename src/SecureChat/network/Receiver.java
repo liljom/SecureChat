@@ -16,11 +16,9 @@ public class Receiver {
     private static Thread receiveThread;
     private ServerSocket server;
     private ObservableList<String> messages;
-    private Person person;
     private CryptoUtil cryptoUtil;
 
     public Receiver(Person person) {
-        this.person = person;
         cryptoUtil = new CryptoUtil(person.getKey());
 
         receiveThread = new Thread(() -> {
@@ -55,7 +53,7 @@ public class Receiver {
         String nonce = data.substring(0, dividerIndex);
         String cypherText = data.substring(dividerIndex + 3, data.length());
         String message = cryptoUtil.decrypt(stringToBa(cypherText), stringToBa(nonce));
-        Platform.runLater(() -> messages.add(person + ": " + message));     // runlater method is used to satisfy JavaFX thread
+        Platform.runLater(() -> messages.add("received: " + message));     // runlater method is used to satisfy JavaFX thread
     }
 
     public void setMessageList(ObservableList<String> messages) {

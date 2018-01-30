@@ -71,7 +71,7 @@ public class Controller implements Initializable {
         String message = taMessage.getText();
         if (message.isEmpty()) return;
         sender.send(message);
-        listMessage.getItems().add("me: " + message);
+        listMessage.getItems().add("sent: " + message);
         taMessage.clear();
     }
 
