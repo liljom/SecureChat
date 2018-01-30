@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SecureChat.Controller">
+   <left>
+      <VBox style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Connect to:">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <ListView fx:id="listPeople" prefWidth="180.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </ListView>
+            <HBox>
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnConnect" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#connect" text="Connect" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="3.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox spacing="3.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea fx:id="taMessage" onKeyPressed="#lookForEnter" prefHeight="130.0">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></TextArea>
+            <VBox>
+               <children>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <Button fx:id="btnSend" mnemonicParsing="false" onAction="#send" text="Send" />
+                  <Region VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <center>
+      <ListView fx:id="listMessage" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" top="5.0" />
+         </BorderPane.margin>
+      </ListView>
+   </center>
+   <top>
+      <HBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Demo:" textFill="#616161">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnJohn" mnemonicParsing="false" onAction="#runAsJohn" text="Run as John" />
+            <Button fx:id="btnLilly" mnemonicParsing="false" onAction="#runAsLilly" text="Run as Lilly" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>
