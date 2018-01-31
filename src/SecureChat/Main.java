@@ -14,7 +14,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("App.fxml"));
         stage.setTitle("Secure chat");
         stage.setScene(new Scene(root));
-        stage.setOnCloseRequest(event -> Receiver.stop());
+        stage.setOnCloseRequest(event -> {
+            if (Receiver.instantiated) Receiver.stop();
+            stage.close();
+        });
         stage.show();
     }
 

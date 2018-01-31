@@ -14,6 +14,7 @@ import static SecureChat.crypto.CryptoUtil.stringToBa;
 public class Receiver {
 
     private static Thread receiveThread;
+    public static boolean instantiated = false;
     private ServerSocket server;
     private ObservableList<String> messages;
     private CryptoUtil cryptoUtil;
