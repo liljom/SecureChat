@@ -69,7 +69,7 @@ public class Controller implements Initializable {
     @FXML
     void send(Event event) {
         String message = taMessage.getText();
-        if (message.isEmpty()) return;
+        if (message.trim().isEmpty()) return;
         sender.send(message);
         listMessage.getItems().add("sent: " + message);
         taMessage.clear();
